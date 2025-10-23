@@ -73,146 +73,6 @@ const preguntas = [
     respuestaCorrecta: "Una criptomoneda",
     categoria: "Tecnología Actual"
   },
-  {
-    id: 11,
-    pregunta: "¿Qué es IoT?",
-    opciones: ["Input Output Terminal", "Internet of Things", "International Organization of Technology", "Internet Online Tool"],
-    respuestaCorrecta: "Internet of Things",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 12,
-    pregunta: "¿Qué es una API?",
-    opciones: ["Advanced Programming Instruction", "Application Programming Interface", "Automated Process Integration", "Application Performance Index"],
-    respuestaCorrecta: "Application Programming Interface",
-    categoria: "Programación"
-  },
-  {
-    id: 13,
-    pregunta: "¿Por qué es Python popular en IA?",
-    opciones: ["Es el más rápido", "Es fácil de aprender", "Es el lenguaje oficial de IA", "No lo es"],
-    respuestaCorrecta: "Es fácil de aprender",
-    categoria: "Programación IA"
-  },
-  {
-    id: 14,
-    pregunta: "¿Qué es Deep Learning?",
-    opciones: ["Aprendizaje superficial", "Aprendizaje profundo, subconjunto de ML", "Un tipo de hardware", "Un juego"],
-    respuestaCorrecta: "Aprendizaje profundo, subconjunto de ML",
-    categoria: "IA Avanzada"
-  },
-  {
-    id: 15,
-    pregunta: "¿Quién fundó OpenAI?",
-    opciones: ["Sam Altman", "Elon Musk y otros", "Sundar Pichai", "Tim Cook"],
-    respuestaCorrecta: "Elon Musk y otros",
-    categoria: "IA Actual"
-  },
-  {
-    id: 16,
-    pregunta: "¿Qué significa GPT?",
-    opciones: ["General Purpose Tool", "Generative Pre-trained Transformer", "Global Programming Technology", "Graphics Processing Tool"],
-    respuestaCorrecta: "Generative Pre-trained Transformer",
-    categoria: "IA Actual"
-  },
-  {
-    id: 17,
-    pregunta: "¿Qué es un chatbot?",
-    opciones: ["Un robot físico", "Un programa que simula conversación humana", "Un tipo de base de datos", "Un antivirus"],
-    respuestaCorrecta: "Un programa que simula conversación humana",
-    categoria: "IA Básica"
-  },
-  {
-    id: 18,
-    pregunta: "¿Qué es overfitting en ML?",
-    opciones: ["El modelo no aprende", "El modelo aprende demasiado el ruido de los datos", "Un tipo de hardware", "Un lenguaje"],
-    respuestaCorrecta: "El modelo aprende demasiado el ruido de los datos",
-    categoria: "IA Avanzada"
-  },
-  {
-    id: 19,
-    pregunta: "¿Qué es un dataset?",
-    opciones: ["Un tipo de archivo", "Conjunto de datos", "Un software", "Un hardware"],
-    respuestaCorrecta: "Conjunto de datos",
-    categoria: "IA Básica"
-  },
-  {
-    id: 20,
-    pregunta: "¿Qué es TensorFlow?",
-    opciones: ["Un tipo de tensor matemático", "Una biblioteca de ML de Google", "Un juego", "Un sitio web"],
-    respuestaCorrecta: "Una biblioteca de ML de Google",
-    categoria: "Herramientas IA"
-  },
-  {
-    id: 21,
-    pregunta: "¿Qué es Supervised Learning?",
-    opciones: ["Aprendizaje sin supervisión", "Aprendizaje con datos etiquetados", "Un tipo de hardware", "Un lenguaje"],
-    respuestaCorrecta: "Aprendizaje con datos etiquetados",
-    categoria: "IA Básica"
-  },
-  {
-    id: 22,
-    pregunta: "¿Qué es Unsupervised Learning?",
-    opciones: ["Aprendizaje supervisado", "Aprendizaje sin datos etiquetados", "Un tipo de red", "Un dataset"],
-    respuestaCorrecta: "Aprendizaje sin datos etiquetados",
-    categoria: "IA Básica"
-  },
-  {
-    id: 23,
-    pregunta: "¿Qué es Reinforcement Learning?",
-    opciones: ["Unsupervised", "Aprendizaje por refuerzo, mediante recompensas", "Aprendizaje supervisado", "Deep learning"],
-    respuestaCorrecta: "Aprendizaje por refuerzo, mediante recompensas",
-    categoria: "IA Avanzada"
-  },
-  {
-    id: 24,
-    pregunta: "¿Qué es GAN?",
-    opciones: ["Global AI Network", "Generative Adversarial Network", "Graphics Animation Node", "General Access Network"],
-    respuestaCorrecta: "Generative Adversarial Network",
-    categoria: "IA Avanzada"
-  },
-  {
-    id: 25,
-    pregunta: "¿Qué es la ética en IA?",
-    opciones: ["Un tipo de algoritmo", "Estudio de implicaciones morales de la IA", "Un hardware", "Un dataset"],
-    respuestaCorrecta: "Estudio de implicaciones morales de la IA",
-    categoria: "Ética IA"
-  },
-  {
-    id: 26,
-    pregunta: "¿Qué es bias en IA?",
-    opciones: ["Un tipo de peso", "Sesgo en los datos que afecta el modelo", "Un algoritmo", "Un lenguaje"],
-    respuestaCorrecta: "Sesgo en los datos que afecta el modelo",
-    categoria: "Ética IA"
-  },
-  {
-    id: 27,
-    pregunta: "¿Para qué se usa 5G?",
-    opciones: ["IA", "Mejor conectividad y velocidad", "Blockchain", "VR"],
-    respuestaCorrecta: "Mejor conectividad y velocidad",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 28,
-    pregunta: "¿Qué es el Metaverso?",
-    opciones: ["Un meta universo físico", "Un mundo virtual persistente", "Un juego", "Un sitio web"],
-    respuestaCorrecta: "Un mundo virtual persistente",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 29,
-    pregunta: "¿Qué es NFT?",
-    opciones: ["New File Type", "Non-Fungible Token", "Network Function Tool", "Non-Functional Test"],
-    respuestaCorrecta: "Non-Fungible Token",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 30,
-    pregunta: "¿Qué es Quantum Computing?",
-    opciones: ["Computación clásica rápida", "Computación usando qubits", "Un tipo de IA", "Un blockchain"],
-    respuestaCorrecta: "Computación usando qubits",
-    categoria: "Tecnología Futura"
-  },
 ];
 
 // Componente principal
@@ -412,10 +272,10 @@ export default function CarreraDelSaber() {
   // Pantalla de inicio
   if (estadoJuego === "inicio") {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#5a2290] via-[#6b32a3] to-[#63ed12]">
-        <div className="text-center p-8 bg-white bg-opacity-95 rounded-2xl shadow-2xl max-w-2xl w-full">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#5a2290] via-[#6b32a3] to-[#63ed12] p-4">
+        <div className="text-center p-4 sm:p-6 bg-white bg-opacity-95 rounded-2xl shadow-2xl max-w-md sm:max-w-lg md:max-w-2xl w-full mx-auto">
           <motion.h1 
-            className="text-5xl font-bold text-[#5a2290] mb-8"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#5a2290] mb-4 sm:mb-8"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -424,28 +284,28 @@ export default function CarreraDelSaber() {
           </motion.h1>
           
           <motion.div
-            className="mb-8"
+            className="mb-6 sm:mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <p className="text-xl text-gray-700 mb-4">
+            <p className="text-lg sm:text-xl text-gray-700 mb-2 sm:mb-4">
               Centro de Informática - Universidad Señor de Sipán
             </p>
-            <p className="text-md text-gray-600 mb-6">
+            <p className="text-sm sm:text-md text-gray-600 mb-4 sm:mb-6">
               ¡Compite respondiendo preguntas de IA y tecnología actual de forma independiente!
             </p>
             
             {/* Configuración de equipos */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 gap-4 mb-6 sm:mb-6">
               {jugadores.map(jugador => {
                 const styles = teamStyles[jugador.id];
                 return (
-                  <div key={jugador.id} className="flex flex-col">
-                    <label className="text-left text-gray-700 mb-1">Nombre del {jugador.nombre}</label>
+                  <div key={jugador.id} className="flex flex-col w-full">
+                    <label className="text-left text-gray-700 mb-1 text-sm sm:text-base">Nombre del {jugador.nombre}</label>
                     <input 
                       type="text" 
-                      className={`border-2 ${styles.border} rounded-lg px-3 py-2 focus:ring-2 focus:ring-offset-2 focus:ring-[#63ed12] focus:border-transparent`}
+                      className={`border-2 ${styles.border} rounded-lg px-3 py-2 focus:ring-2 focus:ring-offset-2 focus:ring-[#63ed12] focus:border-transparent text-sm sm:text-base`}
                       value={jugador.nombre}
                       onChange={(e) => cambiarNombreEquipo(jugador.id, e.target.value)}
                       placeholder={`Nombre del ${jugador.nombre}`}
@@ -456,21 +316,21 @@ export default function CarreraDelSaber() {
             </div>
             
             {/* Configuración de rondas */}
-            <div className="mb-8">
-              <label className="block text-left text-gray-700 mb-1">Número de preguntas por equipo</label>
-              <div className="flex justify-between items-center">
+            <div className="mb-6 sm:mb-8">
+              <label className="block text-left text-gray-700 mb-1 text-sm sm:text-base">Número de preguntas por equipo</label>
+              <div className="flex justify-between items-center w-full">
                 <button 
                   onClick={() => ajustarRondas(Math.max(5, totalRondas - 5))} 
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-l transition duration-200"
+                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-3 sm:px-4 rounded-l transition duration-200 text-sm sm:text-base"
                 >
                   -
                 </button>
-                <span className="px-4 py-2 bg-gray-100 text-gray-800 font-semibold">
+                <span className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-800 font-semibold text-sm sm:text-base">
                   {totalRondas} preguntas
                 </span>
                 <button 
                   onClick={() => ajustarRondas(Math.min(10, totalRondas + 5))} 
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-r transition duration-200"
+                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-3 sm:px-4 rounded-r transition duration-200 text-sm sm:text-base"
                 >
                   +
                 </button>
@@ -480,7 +340,7 @@ export default function CarreraDelSaber() {
           
           <motion.button 
             onClick={iniciarJuego}
-            className="bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white px-8 py-3 rounded-full text-xl font-bold shadow-lg hover:from-[#4a1a80] hover:to-[#52d200] transform hover:scale-105 transition duration-300"
+            className="bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-xl font-bold shadow-lg hover:from-[#4a1a80] hover:to-[#52d200] transform hover:scale-105 transition duration-300 w-full sm:w-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -493,27 +353,27 @@ export default function CarreraDelSaber() {
   
   // Pantalla de juego
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#5a2290] via-[#6b32a3] to-[#63ed12] p-4 sm:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#5a2290] via-[#6b32a3] to-[#63ed12] p-2 sm:p-4">
       {/* Encabezado */}
-      <header className="text-center mb-4">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-1 drop-shadow-lg">
+      <header className="text-center mb-2 sm:mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 drop-shadow-lg">
           Carrera del Saber <span className="text-[#63ed12]">Tecnológico</span>
         </h1>
-        <p className="text-lg text-white/80">
+        <p className="text-sm sm:text-base text-white/80">
           Centro de Informática - USS | Rondas independientes
         </p>
       </header>
       
       {/* Contenido principal */}
-      <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+      <div className="max-w-full sm:max-w-4xl md:max-w-6xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
         
         {/* Pista de carreras */}
-        <div className="relative p-4 md:p-6 bg-gray-800 bg-opacity-80 rounded-t-xl"
+        <div className="relative p-2 sm:p-4 md:p-6 bg-gray-800 bg-opacity-80 rounded-t-xl"
              style={{
                backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px)',
                backgroundSize: '40px 100%'
              }}>
-          <h2 className="text-center text-xl font-semibold mb-4 text-white">
+          <h2 className="text-center text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-4 text-white">
             Pista de Carrera Tecnológica
           </h2>
           
@@ -521,28 +381,28 @@ export default function CarreraDelSaber() {
             const teamStyle = teamStyles[jugador.id];
             
             return (
-              <div key={jugador.id} className="mb-6 last:mb-0">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center">
-                    <span className={`w-5 h-5 rounded-full ${jugador.color} mr-2`}></span>
-                    <span className={`font-medium ${teamStyle.text}`}>
+              <div key={jugador.id} className="mb-4 sm:mb-6 last:mb-0">
+                <div className="flex items-center justify-between mb-1 sm:mb-2">
+                  <div className="flex items-center flex-1">
+                    <span className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full ${jugador.color} mr-1 sm:mr-2`}></span>
+                    <span className={`font-medium ${teamStyle.text} text-sm sm:text-base truncate`}>
                       {jugador.nombre}
                     </span>
                   </div>
-                  <span className="text-yellow-300 font-bold">
+                  <span className="text-yellow-300 font-bold text-sm sm:text-base ml-2">
                     {jugador.puntaje} pts
                   </span>
                 </div>
                 
-                <div className="h-10 bg-gray-900 border border-gray-700 rounded-full overflow-hidden relative">
+                <div className="h-8 sm:h-10 bg-gray-900 border border-gray-700 rounded-full overflow-hidden relative">
                   <div className="absolute right-0 top-0 bottom-0 w-1 bg-yellow-400 z-10"></div>
                   <div 
                     className={`h-full ${jugador.color} transition-all duration-1000 ease-out`} 
                     style={{ width: `${jugador.progreso}%` }}
                   ></div>
                   <motion.div
-                    className="absolute top-0 h-10 w-12 flex items-center justify-center"
-                    style={{ left: `calc(${jugador.progreso}% - 24px)` }}
+                    className="absolute top-0 h-8 sm:h-10 w-10 sm:w-12 flex items-center justify-center"
+                    style={{ left: `calc(${jugador.progreso}% - 20px)` }}
                     animate={
                       teamAnimaciones[jugador.id]
                         ? { 
@@ -555,11 +415,11 @@ export default function CarreraDelSaber() {
                     transition={{ duration: 0.5 }}
                   >
                     {jugador.id === 1 ? (
-                      <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 sm:w-9 sm:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" className={teamStyle.icon} />
                       </svg>
                     ) : (
-                      <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 sm:w-9 sm:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" className={teamStyle.icon} />
                       </svg>
                     )}
@@ -572,9 +432,9 @@ export default function CarreraDelSaber() {
         
         {/* Sección de preguntas independientes */}
         {estadoJuego === "jugando" && (
-          <div className="p-4 md:p-6 bg-white">
-            <div className="mb-6 bg-indigo-50 p-4 rounded-lg">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="p-2 sm:p-4 md:p-6 bg-white">
+            <div className="mb-4 sm:mb-6 bg-indigo-50 p-2 sm:p-4 rounded-lg">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 {jugadores.map((jugador) => {
                   const teamId = jugador.id;
                   const teamStyle = teamStyles[teamId];
@@ -584,40 +444,40 @@ export default function CarreraDelSaber() {
                   const shuffledOpciones = teamShuffledOptions[teamId] || currentQ?.opciones || [];
                   
                   return (
-                    <div key={teamId} className={`p-4 ${teamStyle.border} border-2 rounded-lg shadow-sm ${index >= totalRondas ? 'bg-gray-50' : 'bg-white'}`}>
-                      <div className="flex justify-between items-center mb-3">
-                        <h4 className={`font-semibold ${teamStyle.text}`}>
+                    <div key={teamId} className={`p-2 sm:p-4 ${teamStyle.border} border-2 rounded-lg shadow-sm ${index >= totalRondas ? 'bg-gray-50' : 'bg-white'}`}>
+                      <div className="flex justify-between items-center mb-2 sm:mb-3">
+                        <h4 className={`font-semibold ${teamStyle.text} text-sm sm:text-base`}>
                           {jugador.nombre}
                         </h4>
-                        <span className="text-sm font-medium text-gray-600">
+                        <span className="text-xs sm:text-sm font-medium text-gray-600">
                           Ronda {index + 1} / {totalRondas}
                         </span>
                       </div>
                       
                       {index >= totalRondas ? (
-                        <div className="text-center py-8">
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">¡Completado!</h3>
-                          <p className="text-gray-600">Has respondido todas las preguntas.</p>
+                        <div className="text-center py-6 sm:py-8">
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">¡Completado!</h3>
+                          <p className="text-gray-600 text-sm sm:text-base">Has respondido todas las preguntas.</p>
                         </div>
                       ) : (
                         <>
                           
-                          <div className="flex items-center mb-3">
-                            <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+                          <div className="flex items-center mb-2 sm:mb-3">
+                            <span className="px-2 sm:px-3 py-1 bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-medium rounded-full">
                               {currentQ.categoria}
                             </span>
                           </div>
                           
-                          <h3 className="text-lg font-bold text-gray-800 mb-4">
+                          <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2 sm:mb-4 leading-relaxed">
                             {currentQ.pregunta}
                           </h3>
                           
-                          <div className="grid grid-cols-1 gap-3">
+                          <div className="grid grid-cols-1 gap-2 sm:gap-3">
                             {shuffledOpciones.map((opcion, index) => {
                               const isSelected = teamSelections[teamId] === opcion;
                               const isCorrect = opcion === currentQ.respuestaCorrecta;
                               
-                              let btnClass = 'p-3 rounded-lg text-left transition-all transform hover:scale-102 border-2 w-full font-medium';
+                              let btnClass = 'p-2 sm:p-3 rounded-lg text-left transition-all transform hover:scale-102 border-2 w-full font-medium text-sm sm:text-base';
                               
                               if (!hasAnswered) {
                                 btnClass += ' bg-white border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 cursor-pointer';
@@ -651,7 +511,7 @@ export default function CarreraDelSaber() {
                             <motion.div
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              className={`mt-4 p-3 rounded-lg text-center font-medium ${
+                              className={`mt-2 sm:mt-4 p-2 sm:p-3 rounded-lg text-center font-medium text-sm sm:text-base ${
                                 teamFeedbacks[teamId].includes('correcta')
                                   ? "bg-green-100 text-green-800 border border-green-200"
                                   : "bg-red-100 text-red-800 border border-red-200"
@@ -672,14 +532,14 @@ export default function CarreraDelSaber() {
         
         {/* Pantalla de fin */}
         {estadoJuego === "fin" && (
-          <div className="p-6 bg-white">
+          <div className="p-4 sm:p-6 bg-white">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-center p-6 bg-gradient-to-r from-[#63ed12]/10 to-[#5a2290]/10 rounded-lg shadow-inner border border-[#63ed12]/20"
+              className="text-center p-4 sm:p-6 bg-gradient-to-r from-[#63ed12]/10 to-[#5a2290]/10 rounded-lg shadow-inner border border-[#63ed12]/20"
             >
-              <h2 className="text-3xl font-bold text-[#5a2290] mb-4">
+              <h2 className="text-xl sm:text-3xl font-bold text-[#5a2290] mb-2 sm:mb-4">
                 ¡Competencia Finalizada!
               </h2>
               {ganador && (
@@ -687,7 +547,7 @@ export default function CarreraDelSaber() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="flex justify-center mb-6"
+                  className="flex justify-center mb-4 sm:mb-6"
                 >
                   <motion.div
                     animate={{ 
@@ -700,24 +560,24 @@ export default function CarreraDelSaber() {
                       repeat: Infinity,
                       repeatType: "loop"
                     }}
-                    className={`w-24 h-24 rounded-full ${ganador.color || 'bg-gray-500'} flex items-center justify-center text-white text-5xl font-bold shadow-lg`}
+                    className={`w-16 h-16 sm:w-24 sm:h-24 rounded-full ${ganador.color || 'bg-gray-500'} flex items-center justify-center text-white text-3xl sm:text-5xl font-bold shadow-lg`}
                   >
                     🏆
                   </motion.div>
                 </motion.div>
               )}
               
-              <p className="text-2xl font-semibold text-[#5a2290] mb-2">
+              <p className="text-lg sm:text-2xl font-semibold text-[#5a2290] mb-2">
                 Ganador: {ganador ? ganador.nombre : ''}
               </p>
               
-              <div className="mt-6 mb-6 bg-white rounded-lg p-4 shadow-md">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800 text-center">Resultados Finales</h3>
+              <div className="mt-4 sm:mt-6 mb-4 sm:mb-6 bg-white rounded-lg p-2 sm:p-4 shadow-md">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800 text-center">Resultados Finales</h3>
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Equipo</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Puntos</th>
+                      <th className="px-2 sm:px-6 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Equipo</th>
+                      <th className="px-2 sm:px-6 py-2 sm:py-3 text-right text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Puntos</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -725,16 +585,16 @@ export default function CarreraDelSaber() {
                       const isWinner = ganador && jugador.nombre === ganador.nombre;
                       return (
                         <tr key={jugador.id} className={isWinner ? "bg-[#63ed12]/10" : ""}>
-                          <td className="px-6 py-4 whitespace-nowrap text-left">
+                          <td className="px-2 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-left">
                             <div className="flex items-center">
-                              <div className={`w-4 h-4 ${jugador.color} rounded-full mr-2`}></div>
-                              <span className={`font-medium ${isWinner ? "text-[#63ed12]" : "text-gray-700"}`}>
+                              <div className={`w-3 h-3 sm:w-4 sm:h-4 ${jugador.color} rounded-full mr-1 sm:mr-2`}></div>
+                              <span className={`font-medium ${isWinner ? "text-[#63ed12]" : "text-gray-700"} text-sm sm:text-base`}>
                                 {jugador.nombre}
                               </span>
-                              {isWinner && <span className="ml-2 text-[#63ed12]">👑</span>}
+                              {isWinner && <span className="ml-1 sm:ml-2 text-[#63ed12]">👑</span>}
                             </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-right text-lg font-bold text-gray-700">
+                          <td className="px-2 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-right text-lg sm:text-lg font-bold text-gray-700">
                             {jugador.puntaje}
                           </td>
                         </tr>
@@ -746,7 +606,7 @@ export default function CarreraDelSaber() {
               
               <button 
                 onClick={iniciarJuego}
-                className="bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white px-6 py-3 rounded-full text-lg font-bold shadow-lg hover:from-[#4a1a80] hover:to-[#52d200] transform hover:scale-105 transition duration-300"
+                className="bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-base sm:text-lg font-bold shadow-lg hover:from-[#4a1a80] hover:to-[#52d200] transform hover:scale-105 transition duration-300 w-full sm:w-auto"
               >
                 Nueva Competencia
               </button>
@@ -755,7 +615,7 @@ export default function CarreraDelSaber() {
         )}
         
         {/* Pie de página */}
-        <footer className="p-3 bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white text-center text-sm">
+        <footer className="p-2 sm:p-3 bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white text-center text-xs sm:text-sm">
           Carrera del Saber Tecnológico - Centro de Informática USS
         </footer>
       </div>
