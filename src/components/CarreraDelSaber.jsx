@@ -116,6 +116,18 @@ export default function CarreraDelSaber() {
     }
   };
   
+  // Finalizar juego comparando puntajes si ambos terminaron
+  const finalizarJuego = useCallback(() => {
+    if (jugadores[0].puntaje > jugadores[1].puntaje) {
+      setGanador(jugadores[0]);
+    } else if (jugadores[1].puntaje > jugadores[0].puntaje) {
+      setGanador(jugadores[1]);
+    } else {
+      setGanador({ nombre: "¡Empate!", color: "bg-gray-500" });
+    }
+    setEstadoJuego("fin");
+  }, [jugadores]);
+  
   // Obtener pregunta actual para un equipo
   const getCurrentQuestion = useCallback((teamId) => {
     const idx = teamQuestionIndices[teamId] || 0;
@@ -131,7 +143,7 @@ export default function CarreraDelSaber() {
     setTeamSelections(prev => ({ ...prev, [teamId]: null }));
     setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
     
-    // Actualizar progreso basado en preguntas respondidas
+    // Actualizar progreso basado en preguntas respondidas correctamente
     setJugadores(prevJugadores => {
       const jugadoresActualizados = [...prevJugadores];
       const indiceJugador = jugadoresActualizados.findIndex(j => j.id === teamId);
@@ -143,7 +155,22 @@ export default function CarreraDelSaber() {
       
       return jugadoresActualizados;
     });
-  }, [teamQuestionIndices, totalRondas]);
+    
+    // Verificar si este equipo terminó
+    if (newIndex >= totalRondas) {
+      const otherId = teamId === 1 ? 2 : 1;
+      const otherIndex = teamQuestionIndices[otherId] || 0;
+      if (otherIndex < totalRondas) {
+        // Este equipo ganó por terminar primero
+        const jugadorGanador = jugadores.find(j => j.id === teamId);
+        setGanador(jugadorGanador);
+        setEstadoJuego("fin");
+      } else {
+        // Ambos terminaron, comparar puntajes
+        finalizarJuego();
+      }
+    }
+  }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego]);
   
   // Manejar selección de respuesta
   const seleccionarRespuesta = useCallback((teamId, opcion) => {
@@ -163,7 +190,7 @@ export default function CarreraDelSaber() {
     }
     
     if (esCorrecta) {
-      setTeamFeedbacks(prev => ({ ...prev, [teamId]: "¡Respuesta correcta! +10 pts 🎉" }));
+      setTeamFeedbacks(prev => ({ ...prev, [teamId]: "¡Respuesta correcta! +5 pts 🎉" }));
       
       setTeamAnimaciones(prev => ({ ...prev, [teamId]: true }));
       setTimeout(() => {
@@ -176,7 +203,7 @@ export default function CarreraDelSaber() {
         const indiceJugador = jugadoresActualizados.findIndex(j => j.id === teamId);
         
         if (indiceJugador !== -1) {
-          jugadoresActualizados[indiceJugador].puntaje += 10;
+          jugadoresActualizados[indiceJugador].puntaje += 5;
         }
         
         return jugadoresActualizados;
@@ -190,23 +217,19 @@ export default function CarreraDelSaber() {
         ...prev, 
         [teamId]: `¡Respuesta incorrecta! La correcta era: ${currentQ.respuestaCorrecta}` 
       }));
+      // Después de 3000ms, resetear para reintentar
       setTimeout(() => {
-        advanceForTeam(teamId);
+        setTeamSelections(prev => ({ ...prev, [teamId]: null }));
+        setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
+        // Barajar opciones nuevamente para el reintento
+        const idx = teamQuestionIndices[teamId];
+        if (idx < totalRondas) {
+          const opts = [...preguntas[idx].opciones].sort(() => Math.random() - 0.5);
+          setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
+        }
       }, 3000);
     }
-  }, [advanceForTeam, getCurrentQuestion, teamSelections]);
-  
-  // Finalizar juego comparando puntajes si ambos terminaron
-  const finalizarJuego = useCallback(() => {
-    if (jugadores[0].puntaje > jugadores[1].puntaje) {
-      setGanador(jugadores[0]);
-    } else if (jugadores[1].puntaje > jugadores[0].puntaje) {
-      setGanador(jugadores[1]);
-    } else {
-      setGanador({ nombre: "¡Empate!", color: "bg-gray-500" });
-    }
-    setEstadoJuego("fin");
-  }, [jugadores]);
+  }, [advanceForTeam, getCurrentQuestion, teamSelections, totalRondas, teamQuestionIndices]);
   
   // Ajustar número de rondas (preguntas por equipo)
   const ajustarRondas = (cantidad) => {
