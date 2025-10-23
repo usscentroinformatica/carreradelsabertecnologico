@@ -143,7 +143,22 @@ export default function CarreraDelSaber() {
       
       return jugadoresActualizados;
     });
-  }, [teamQuestionIndices, totalRondas]);
+    
+    // Verificar si este equipo terminó
+    if (newIndex >= totalRondas) {
+      const otherId = teamId === 1 ? 2 : 1;
+      const otherIndex = teamQuestionIndices[otherId] || 0;
+      if (otherIndex < totalRondas) {
+        // Este equipo ganó por terminar primero
+        const jugadorGanador = jugadores.find(j => j.id === teamId);
+        setGanador(jugadorGanador);
+        setEstadoJuego("fin");
+      } else {
+        // Ambos terminaron, comparar puntajes
+        finalizarJuego();
+      }
+    }
+  }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego]);
   
   // Manejar selección de respuesta
   const seleccionarRespuesta = useCallback((teamId, opcion) => {
@@ -163,7 +178,7 @@ export default function CarreraDelSaber() {
     }
     
     if (esCorrecta) {
-      setTeamFeedbacks(prev => ({ ...prev, [teamId]: "¡Respuesta correcta! +10 pts 🎉" }));
+      setTeamFeedbacks(prev => ({ ...prev, [teamId]: "¡Respuesta correcta! +5 pts 🎉" }));
       
       setTeamAnimaciones(prev => ({ ...prev, [teamId]: true }));
       setTimeout(() => {
@@ -176,7 +191,7 @@ export default function CarreraDelSaber() {
         const indiceJugador = jugadoresActualizados.findIndex(j => j.id === teamId);
         
         if (indiceJugador !== -1) {
-          jugadoresActualizados[indiceJugador].puntaje += 10;
+          jugadoresActualizados[indiceJugador].puntaje += 5;
         }
         
         return jugadoresActualizados;
