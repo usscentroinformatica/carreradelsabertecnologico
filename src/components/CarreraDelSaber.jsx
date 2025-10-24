@@ -139,9 +139,21 @@ export default function CarreraDelSaber() {
     const oldIndex = teamQuestionIndices[teamId] || 0;
     const newIndex = oldIndex + 1;
     
-    setTeamQuestionIndices(prev => ({ ...prev, [teamId]: newIndex }));
+    // Pre-calcular y establecer las opciones barajadas para la nueva pregunta (evita flash de opciones incorrectas)
+    if (newIndex < totalRondas) {
+      const newOpts = [...preguntas[newIndex].opciones].sort(() => Math.random() - 0.5);
+      setTeamShuffledOptions(prev => ({ ...prev, [teamId]: newOpts }));
+    } else {
+      // Si terminó, establecer como null para evitar mostrar opciones
+      setTeamShuffledOptions(prev => ({ ...prev, [teamId]: null }));
+    }
+    
+    // Resetear selección y feedback ANTES de cambiar el índice (garantiza que no se muestre selección residual)
     setTeamSelections(prev => ({ ...prev, [teamId]: null }));
     setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
+    
+    // Ahora cambiar el índice
+    setTeamQuestionIndices(prev => ({ ...prev, [teamId]: newIndex }));
     
     // Actualizar progreso basado en preguntas respondidas correctamente
     setJugadores(prevJugadores => {
@@ -173,6 +185,7 @@ export default function CarreraDelSaber() {
   }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego]);
   
   // Manejar selección de respuesta
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const seleccionarRespuesta = useCallback((teamId, opcion) => {
     const hasAnswered = teamSelections[teamId] !== null;
     if (hasAnswered) return;
@@ -219,17 +232,18 @@ export default function CarreraDelSaber() {
       }));
       // Después de 3000ms, resetear para reintentar
       setTimeout(() => {
-        setTeamSelections(prev => ({ ...prev, [teamId]: null }));
-        setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
-        // Barajar opciones nuevamente para el reintento
+        // Pre-barajar para el reintento (evita cualquier flash residual)
         const idx = teamQuestionIndices[teamId];
         if (idx < totalRondas) {
           const opts = [...preguntas[idx].opciones].sort(() => Math.random() - 0.5);
           setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
         }
+        
+        setTeamSelections(prev => ({ ...prev, [teamId]: null }));
+        setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
       }, 3000);
     }
-  }, [advanceForTeam, getCurrentQuestion, teamSelections, totalRondas, teamQuestionIndices]);
+  }, [advanceForTeam, getCurrentQuestion, teamSelections, teamQuestionIndices, totalRondas]);
   
   // Ajustar número de rondas (preguntas por equipo)
   const ajustarRondas = (cantidad) => {
@@ -261,17 +275,17 @@ export default function CarreraDelSaber() {
     setEstadoJuego("jugando");
   };
   
-  // Efecto para barajar opciones cuando cambia el índice de pregunta
+  // Efecto para barajar opciones cuando cambia el índice de pregunta (ahora solo como fallback, ya que pre-barajamos en advance)
   useEffect(() => {
     Object.keys(teamQuestionIndices).forEach(teamIdStr => {
       const teamId = parseInt(teamIdStr);
       const idx = teamQuestionIndices[teamId];
-      if (idx < totalRondas) {
+      if (idx < totalRondas && teamShuffledOptions[teamId] === null) { // Solo si no está pre-barajado
         const opts = [...preguntas[idx].opciones].sort(() => Math.random() - 0.5);
         setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
       }
     });
-  }, [teamQuestionIndices, totalRondas]);
+  }, [teamQuestionIndices, totalRondas, teamShuffledOptions]);
   
   // Efecto para verificar fin de juego cuando un equipo completa
   useEffect(() => {
