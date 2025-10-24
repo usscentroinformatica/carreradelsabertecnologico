@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
-// Banco de preguntas básicas de tecnología actual enfocadas en IA para el Centro de Informática de la USS
-const preguntas = [
+// Banco de preguntas básicas de tecnología actual enfocadas en IA para el Centro de Informática de la USS (20 preguntas)
+const preguntasInformatica = [
   {
     id: 1,
     pregunta: "¿Qué significa IA?",
@@ -73,10 +73,309 @@ const preguntas = [
     respuestaCorrecta: "Una criptomoneda",
     categoria: "Tecnología Actual"
   },
+  {
+    id: 11,
+    pregunta: "¿Qué es un algoritmo?",
+    opciones: ["Una receta de cocina", "Una secuencia de pasos para resolver un problema", "Un tipo de virus", "Un lenguaje"],
+    respuestaCorrecta: "Una secuencia de pasos para resolver un problema",
+    categoria: "IA Básica"
+  },
+  {
+    id: 12,
+    pregunta: "¿Qué significa API?",
+    opciones: ["Application Programming Interface", "Advanced Processing Input", "Artificial Personal Intelligence", "Audio Photo Image"],
+    respuestaCorrecta: "Application Programming Interface",
+    categoria: "Tecnología Actual"
+  },
+  {
+    id: 13,
+    pregunta: "¿Qué es Python?",
+    opciones: ["Un lenguaje de programación", "Una serpiente", "Un framework", "Un OS"],
+    respuestaCorrecta: "Un lenguaje de programación",
+    categoria: "Programación"
+  },
+  {
+    id: 14,
+    pregunta: "¿Qué es un bot?",
+    opciones: ["Un robot pequeño", "Un programa automatizado", "Un botón", "Un byte"],
+    respuestaCorrecta: "Un programa automatizado",
+    categoria: "IA Actual"
+  },
+  {
+    id: 15,
+    pregunta: "¿Qué es IoT?",
+    opciones: ["Internet of Things", "Input Output Terminal", "Intelligent Operating Tool", "Image Over Time"],
+    respuestaCorrecta: "Internet of Things",
+    categoria: "Tecnología Actual"
+  },
+  {
+    id: 16,
+    pregunta: "¿Qué es AR?",
+    opciones: ["Augmented Reality", "Artificial Robot", "Audio Recorder", "Advanced Research"],
+    respuestaCorrecta: "Augmented Reality",
+    categoria: "Tecnología Actual"
+  },
+  {
+    id: 17,
+    pregunta: "¿Qué es SQL?",
+    opciones: ["Structured Query Language", "Simple Query Logic", "System Quality Level", "Secure Query Link"],
+    respuestaCorrecta: "Structured Query Language",
+    categoria: "Bases de Datos"
+  },
+  {
+    id: 18,
+    pregunta: "¿Qué es un firewall?",
+    opciones: ["Una pared de fuego", "Un software de seguridad", "Un tipo de email", "Un comando"],
+    respuestaCorrecta: "Un software de seguridad",
+    categoria: "Seguridad"
+  },
+  {
+    id: 19,
+    pregunta: "¿Qué es HTML?",
+    opciones: ["HyperText Markup Language", "High Tech Machine Language", "Home Tool Markup Language", "Hyper Transfer Mark Language"],
+    respuestaCorrecta: "HyperText Markup Language",
+    categoria: "Web"
+  },
+  {
+    id: 20,
+    pregunta: "¿Qué es un dataset?",
+    opciones: ["Un conjunto de datos", "Un disco duro", "Un editor de texto", "Un dispositivo"],
+    respuestaCorrecta: "Un conjunto de datos",
+    categoria: "Datos"
+  }
 ];
+
+// Banco de preguntas básicas de inglés (20 preguntas, completamente en inglés)
+const preguntasIngles = [
+  {
+    id: 1,
+    pregunta: "What does 'hello' mean?",
+    opciones: ["Goodbye", "Greeting", "Thank you", "Sorry"],
+    respuestaCorrecta: "Greeting",
+    categoria: "Basic Vocabulary"
+  },
+  {
+    id: 2,
+    pregunta: "What is the correct plural of 'child'?",
+    opciones: ["childs", "children", "childes", "childrens"],
+    respuestaCorrecta: "children",
+    categoria: "Grammar"
+  },
+  {
+    id: 3,
+    pregunta: "What is the opposite of 'big'?",
+    opciones: ["Large", "Small", "Tall", "Wide"],
+    respuestaCorrecta: "Small",
+    categoria: "Vocabulary"
+  },
+  {
+    id: 4,
+    pregunta: "How do you spell the color 'red'?",
+    opciones: ["Red", "Read", "Redd", "Reid"],
+    respuestaCorrecta: "Red",
+    categoria: "Spelling"
+  },
+  {
+    id: 5,
+    pregunta: "Complete: She _____ to school every day.",
+    opciones: ["go", "goes", "going", "gone"],
+    respuestaCorrecta: "goes",
+    categoria: "Grammar"
+  },
+  {
+    id: 6,
+    pregunta: "Complete: I saw ___ elephant.",
+    opciones: ["a", "an", "the", "no article"],
+    respuestaCorrecta: "an",
+    categoria: "Articles"
+  },
+  {
+    id: 7,
+    pregunta: "Complete: The book is ___ the table.",
+    opciones: ["on", "in", "at", "to"],
+    respuestaCorrecta: "on",
+    categoria: "Prepositions"
+  },
+  {
+    id: 8,
+    pregunta: "Complete: What _____ your name?",
+    opciones: ["is", "are", "am", "be"],
+    respuestaCorrecta: "is",
+    categoria: "Grammar"
+  },
+  {
+    id: 9,
+    pregunta: "How do you write 'fifteen' in English?",
+    opciones: ["Fifteen", "Fifty", "Fiveteen", "Fiftien"],
+    respuestaCorrecta: "Fifteen",
+    categoria: "Numbers"
+  },
+  {
+    id: 10,
+    pregunta: "What does 'run' mean?",
+    opciones: ["Walk slowly", "Run", "Sit down", "Sleep"],
+    respuestaCorrecta: "Run",
+    categoria: "Basic Vocabulary"
+  },
+  {
+    id: 11,
+    pregunta: "What is the past tense of 'go'?",
+    opciones: ["goed", "went", "gone", "going"],
+    respuestaCorrecta: "went",
+    categoria: "Grammar"
+  },
+  {
+    id: 12,
+    pregunta: "What does 'family' mean?",
+    opciones: ["Friends", "Relatives", "School", "Work"],
+    respuestaCorrecta: "Relatives",
+    categoria: "Vocabulary"
+  },
+  {
+    id: 13,
+    pregunta: "Complete: We _____ happy.",
+    opciones: ["am", "is", "are", "be"],
+    respuestaCorrecta: "are",
+    categoria: "Grammar"
+  },
+  {
+    id: 14,
+    pregunta: "How do you spell 'blue'?",
+    opciones: ["Blew", "Blue", "Bloue", "Blo"],
+    respuestaCorrecta: "Blue",
+    categoria: "Spelling"
+  },
+  {
+    id: 15,
+    pregunta: "What is the opposite of 'hot'?",
+    opciones: ["Cold", "Warm", "Cool", "Heat"],
+    respuestaCorrecta: "Cold",
+    categoria: "Vocabulary"
+  },
+  {
+    id: 16,
+    pregunta: "Complete: This is my book. _____ is on the desk.",
+    opciones: ["He", "She", "It", "They"],
+    respuestaCorrecta: "It",
+    categoria: "Pronouns"
+  },
+  {
+    id: 17,
+    pregunta: "What time is it? It's half past two.",
+    opciones: ["1:30", "2:30", "3:00", "1:00"],
+    respuestaCorrecta: "2:30",
+    categoria: "Time"
+  },
+  {
+    id: 18,
+    pregunta: "Complete: _____ cat is black.",
+    opciones: ["A", "An", "The", "No article"],
+    respuestaCorrecta: "The",
+    categoria: "Articles"
+  },
+  {
+    id: 19,
+    pregunta: "What does 'eat' mean?",
+    opciones: ["Drink", "Sleep", "Eat", "Run"],
+    respuestaCorrecta: "Eat",
+    categoria: "Vocabulary"
+  },
+  {
+    id: 20,
+    pregunta: "What is the plural of 'man'?",
+    opciones: ["mans", "men", "man", "menn"],
+    respuestaCorrecta: "men",
+    categoria: "Grammar"
+  }
+];
+
+// Objeto de traducciones
+const translations = {
+  es: {
+    titlePrefix: "Carrera del Saber",
+    titleSuffixInformatica: "Tecnológico",
+    titleSuffixIngles: "en Inglés",
+    subtitleInformatica: "Centro de Informática - Universidad Señor de Sipán",
+    subtitleIngles: "Centro de Idiomas - Universidad Señor de Sipán",
+    descriptionInformatica: "¡Compite respondiendo preguntas de IA y tecnología actual de forma independiente!",
+    descriptionIngles: "¡Compite respondiendo preguntas básicas de inglés de forma independiente!",
+    tabInformatica: "Informática",
+    tabIngles: "Inglés",
+    teamLabel: (teamName) => `Nombre del ${teamName}`,
+    teamPlaceholder: (teamName) => `Nombre del ${teamName}`,
+    roundsLabel: "Número de preguntas por equipo",
+    roundsText: (num) => `${num} preguntas`,
+    startButton: "¡Comenzar Competencia!",
+    pistaTitleInformatica: "Pista de Carrera Tecnológica",
+    pistaTitleIngles: "Pista de Carrera en Inglés",
+    headerSubtitle: "Rondas independientes",
+    roundText: (index, total) => `Ronda ${index + 1} / ${total}`,
+    completedTitle: "¡Completado!",
+    completedText: "Has respondido todas las preguntas.",
+    correctFeedback: "¡Respuesta correcta! +5 pts 🎉",
+    incorrectFeedback: (correct) => `¡Respuesta incorrecta! La correcta era: ${correct}`,
+    finishedTitle: "¡Competencia Finalizada!",
+    winnerLabel: "Ganador:",
+    resultsTitle: "Resultados Finales",
+    teamHeader: "Equipo",
+    pointsHeader: "Puntos",
+    newCompetition: "Nueva Competencia",
+    footerInformatica: "Carrera del Saber Tecnológico - Centro de Informática USS",
+    footerIngles: "Carrera del Saber en Inglés - Centro de Idiomas USS",
+    pointsAbbr: "pts"
+  },
+  en: {
+    titlePrefix: "Knowledge Race",
+    titleSuffixInformatica: "Technological",
+    titleSuffixIngles: "in English",
+    subtitleInformatica: "Computer Center - Señor de Sipán University",
+    subtitleIngles: "Languages Center - Señor de Sipán University",
+    descriptionInformatica: "Compete by answering AI and current technology questions independently!",
+    descriptionIngles: "Compete by answering basic English questions independently!",
+    tabInformatica: "IT",
+    tabIngles: "English",
+    teamLabel: (teamName) => `Name for ${teamName}`,
+    teamPlaceholder: (teamName) => `Name for ${teamName}`,
+    roundsLabel: "Number of questions per team",
+    roundsText: (num) => `${num} questions`,
+    startButton: "Start Competition!",
+    pistaTitleInformatica: "Technological Race Track",
+    pistaTitleIngles: "English Race Track",
+    headerSubtitle: "Independent Rounds",
+    roundText: (index, total) => `Round ${index + 1} / ${total}`,
+    completedTitle: "Completed!",
+    completedText: "You have answered all questions.",
+    correctFeedback: "Correct answer! +5 pts 🎉",
+    incorrectFeedback: (correct) => `Incorrect answer! The correct one was: ${correct}`,
+    finishedTitle: "Competition Finished!",
+    winnerLabel: "Winner:",
+    resultsTitle: "Final Results",
+    teamHeader: "Team",
+    pointsHeader: "Points",
+    newCompetition: "New Competition",
+    footerInformatica: "Knowledge Race Technological - Computer Center USS",
+    footerIngles: "Knowledge Race in English - Languages Center USS",
+    pointsAbbr: "pts"
+  }
+};
 
 // Componente principal
 export default function CarreraDelSaber() {
+  // Tema seleccionado: 'informatica' o 'ingles'
+  const [tema, setTema] = useState('informatica');
+  const lang = tema === 'informatica' ? 'es' : 'en';
+  const t = translations[lang];
+  
+  // Preguntas actuales basadas en tema
+  const basePreguntas = tema === 'informatica' ? preguntasInformatica : preguntasIngles;
+  
+  // Títulos y descripciones dinámicos
+  const titleSuffix = tema === 'informatica' ? t.titleSuffixInformatica : t.titleSuffixIngles;
+  const subtitle = tema === 'informatica' ? t.subtitleInformatica : t.subtitleIngles;
+  const description = tema === 'informatica' ? t.descriptionInformatica : t.descriptionIngles;
+  const pistaTitle = tema === 'informatica' ? t.pistaTitleInformatica : t.pistaTitleIngles;
+  const footer = tema === 'informatica' ? t.footerInformatica : t.footerIngles;
+
   // Referencias para sonidos
   const correctSoundRef = useRef(null);
   const incorrectSoundRef = useRef(null);
@@ -98,6 +397,9 @@ export default function CarreraDelSaber() {
   const [teamAnimaciones, setTeamAnimaciones] = useState({1: false, 2: false});
   const [teamShuffledOptions, setTeamShuffledOptions] = useState({1: null, 2: null});
   const [teamRetryCounts, setTeamRetryCounts] = useState({1: 0, 2: 0}); // Nuevo: para forzar re-render en reintentos
+  
+  // Preguntas barajadas para la competencia actual
+  const [shuffledPreguntas, setShuffledPreguntas] = useState([]);
   
   // Colores de equipos para clases dinámicas
   const teamStyles = {
@@ -124,16 +426,16 @@ export default function CarreraDelSaber() {
     } else if (jugadores[1].puntaje > jugadores[0].puntaje) {
       setGanador(jugadores[1]);
     } else {
-      setGanador({ nombre: "¡Empate!", color: "bg-gray-500" });
+      setGanador({ nombre: lang === 'es' ? "¡Empate!" : "Tie!", color: "bg-gray-500" });
     }
     setEstadoJuego("fin");
-  }, [jugadores]);
+  }, [jugadores, lang]);
   
   // Obtener pregunta actual para un equipo
   const getCurrentQuestion = useCallback((teamId) => {
     const idx = teamQuestionIndices[teamId] || 0;
-    return idx < totalRondas ? preguntas[idx] : null;
-  }, [teamQuestionIndices, totalRondas]);
+    return idx < totalRondas ? shuffledPreguntas[idx] : null;
+  }, [teamQuestionIndices, totalRondas, shuffledPreguntas]);
   
   // Avanzar a la siguiente pregunta para un equipo
   const advanceForTeam = useCallback((teamId) => {
@@ -142,7 +444,7 @@ export default function CarreraDelSaber() {
     
     // Pre-calcular y establecer las opciones barajadas para la nueva pregunta (evita flash de opciones incorrectas)
     if (newIndex < totalRondas) {
-      const newOpts = [...preguntas[newIndex].opciones].sort(() => Math.random() - 0.5);
+      const newOpts = [...shuffledPreguntas[newIndex].opciones].sort(() => Math.random() - 0.5);
       setTeamShuffledOptions(prev => ({ ...prev, [teamId]: newOpts }));
     } else {
       // Si terminó, establecer como null para evitar mostrar opciones
@@ -183,10 +485,9 @@ export default function CarreraDelSaber() {
         finalizarJuego();
       }
     }
-  }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego]);
+  }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego, shuffledPreguntas]);
   
   // Manejar selección de respuesta
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const seleccionarRespuesta = useCallback((teamId, opcion) => {
     const hasAnswered = teamSelections[teamId] !== null;
     if (hasAnswered) return;
@@ -204,7 +505,8 @@ export default function CarreraDelSaber() {
     }
     
     if (esCorrecta) {
-      setTeamFeedbacks(prev => ({ ...prev, [teamId]: "¡Respuesta correcta! +5 pts 🎉" }));
+      const correctMsg = t.correctFeedback;
+      setTeamFeedbacks(prev => ({ ...prev, [teamId]: correctMsg }));
       
       setTeamAnimaciones(prev => ({ ...prev, [teamId]: true }));
       setTimeout(() => {
@@ -227,9 +529,10 @@ export default function CarreraDelSaber() {
         advanceForTeam(teamId);
       }, 1500);
     } else {
+      const incorrectMsg = t.incorrectFeedback(currentQ.respuestaCorrecta);
       setTeamFeedbacks(prev => ({ 
         ...prev, 
-        [teamId]: `¡Respuesta incorrecta! La correcta era: ${currentQ.respuestaCorrecta}` 
+        [teamId]: incorrectMsg 
       }));
       // Después de 3000ms, resetear para reintentar
       setTimeout(() => {
@@ -243,12 +546,12 @@ export default function CarreraDelSaber() {
         // Pre-barajar para el reintento (evita cualquier flash residual)
         const idx = teamQuestionIndices[teamId];
         if (idx < totalRondas) {
-          const opts = [...preguntas[idx].opciones].sort(() => Math.random() - 0.5);
+          const opts = [...shuffledPreguntas[idx].opciones].sort(() => Math.random() - 0.5);
           setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
         }
       }, 3000);
     }
-  }, [advanceForTeam, getCurrentQuestion, teamSelections, teamQuestionIndices, totalRondas]);
+  }, [advanceForTeam, getCurrentQuestion, teamSelections, teamQuestionIndices, totalRondas, shuffledPreguntas, t]);
   
   // Ajustar número de rondas (preguntas por equipo)
   const ajustarRondas = (cantidad) => {
@@ -262,8 +565,12 @@ export default function CarreraDelSaber() {
     ));
   };
   
-  // Iniciar el juego preservando nombres
+  // Iniciar el juego preservando nombres y barajando preguntas
   const iniciarJuego = () => {
+    // Barajar las preguntas del tema actual
+    const shuffled = [...basePreguntas].sort(() => Math.random() - 0.5);
+    setShuffledPreguntas(shuffled);
+    
     setJugadores(prevJugadores => 
       prevJugadores.map(jugador => ({
         ...jugador,
@@ -287,11 +594,11 @@ export default function CarreraDelSaber() {
       const teamId = parseInt(teamIdStr);
       const idx = teamQuestionIndices[teamId];
       if (idx < totalRondas && teamShuffledOptions[teamId] === null) { // Solo si no está pre-barajado
-        const opts = [...preguntas[idx].opciones].sort(() => Math.random() - 0.5);
+        const opts = [...shuffledPreguntas[idx].opciones].sort(() => Math.random() - 0.5);
         setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
       }
     });
-  }, [teamQuestionIndices, totalRondas, teamShuffledOptions]);
+  }, [teamQuestionIndices, totalRondas, teamShuffledOptions, shuffledPreguntas]);
   
   // Efecto para verificar fin de juego cuando un equipo completa
   useEffect(() => {
@@ -323,8 +630,34 @@ export default function CarreraDelSaber() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Carrera del Saber <span className="text-[#63ed12]">Tecnológico</span>
+            {t.titlePrefix} <span className="text-[#63ed12]">{titleSuffix}</span>
           </motion.h1>
+          
+          {/* Tabs para seleccionar tema */}
+          <div className="mb-6 sm:mb-8">
+            <div className="flex bg-gray-200 rounded-lg overflow-hidden justify-center">
+              <button 
+                onClick={() => setTema('informatica')}
+                className={`px-3 py-2 text-sm font-semibold transition-colors flex-1 ${
+                  tema === 'informatica' 
+                    ? 'bg-[#5a2290] text-white' 
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {t.tabInformatica}
+              </button>
+              <button 
+                onClick={() => setTema('ingles')}
+                className={`px-3 py-2 text-sm font-semibold transition-colors flex-1 ${
+                  tema === 'ingles' 
+                    ? 'bg-[#5a2290] text-white' 
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {t.tabIngles}
+              </button>
+            </div>
+          </div>
           
           <motion.div
             className="mb-6 sm:mb-8"
@@ -333,10 +666,10 @@ export default function CarreraDelSaber() {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <p className="text-lg sm:text-xl text-gray-700 mb-2 sm:mb-4">
-              Centro de Informática - Universidad Señor de Sipán
+              {subtitle}
             </p>
             <p className="text-sm sm:text-md text-gray-600 mb-4 sm:mb-6">
-              ¡Compite respondiendo preguntas de IA y tecnología actual de forma independiente!
+              {description}
             </p>
             
             {/* Configuración de equipos */}
@@ -345,13 +678,13 @@ export default function CarreraDelSaber() {
                 const styles = teamStyles[jugador.id];
                 return (
                   <div key={jugador.id} className="flex flex-col w-full">
-                    <label className="text-left text-gray-700 mb-1 text-sm sm:text-base">Nombre del {jugador.nombre}</label>
+                    <label className="text-left text-gray-700 mb-1 text-sm sm:text-base">{t.teamLabel(jugador.nombre)}</label>
                     <input 
                       type="text" 
                       className={`border-2 ${styles.border} rounded-lg px-3 py-2 focus:ring-2 focus:ring-offset-2 focus:ring-[#63ed12] focus:border-transparent text-sm sm:text-base`}
                       value={jugador.nombre}
                       onChange={(e) => cambiarNombreEquipo(jugador.id, e.target.value)}
-                      placeholder={`Nombre del ${jugador.nombre}`}
+                      placeholder={t.teamPlaceholder(jugador.nombre)}
                     />
                   </div>
                 );
@@ -360,7 +693,7 @@ export default function CarreraDelSaber() {
             
             {/* Configuración de rondas */}
             <div className="mb-6 sm:mb-8">
-              <label className="block text-left text-gray-700 mb-1 text-sm sm:text-base">Número de preguntas por equipo</label>
+              <label className="block text-left text-gray-700 mb-1 text-sm sm:text-base">{t.roundsLabel}</label>
               <div className="flex justify-between items-center w-full">
                 <button 
                   onClick={() => ajustarRondas(Math.max(5, totalRondas - 5))} 
@@ -369,10 +702,10 @@ export default function CarreraDelSaber() {
                   -
                 </button>
                 <span className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-800 font-semibold text-sm sm:text-base">
-                  {totalRondas} preguntas
+                  {t.roundsText(totalRondas)}
                 </span>
                 <button 
-                  onClick={() => ajustarRondas(Math.min(10, totalRondas + 5))} 
+                  onClick={() => ajustarRondas(Math.min(20, totalRondas + 5))} 
                   className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-3 sm:px-4 rounded-r transition duration-200 text-sm sm:text-base"
                 >
                   +
@@ -387,7 +720,7 @@ export default function CarreraDelSaber() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            ¡Comenzar Competencia!
+            {t.startButton}
           </motion.button>
         </div>
       </div>
@@ -400,10 +733,10 @@ export default function CarreraDelSaber() {
       {/* Encabezado */}
       <header className="text-center mb-2 sm:mb-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 drop-shadow-lg">
-          Carrera del Saber <span className="text-[#63ed12]">Tecnológico</span>
+          {t.titlePrefix} <span className="text-[#63ed12]">{titleSuffix}</span>
         </h1>
         <p className="text-sm sm:text-base text-white/80">
-          Centro de Informática - USS | Rondas independientes
+          {subtitle} | {t.headerSubtitle}
         </p>
       </header>
       
@@ -417,7 +750,7 @@ export default function CarreraDelSaber() {
                backgroundSize: '40px 100%'
              }}>
           <h2 className="text-center text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-4 text-white">
-            Pista de Carrera Tecnológica
+            {pistaTitle}
           </h2>
           
           {jugadores.map((jugador) => {
@@ -433,7 +766,7 @@ export default function CarreraDelSaber() {
                     </span>
                   </div>
                   <span className="text-yellow-300 font-bold text-sm sm:text-base ml-2">
-                    {jugador.puntaje} pts
+                    {jugador.puntaje} {t.pointsAbbr}
                   </span>
                 </div>
                 
@@ -494,14 +827,14 @@ export default function CarreraDelSaber() {
                           {jugador.nombre}
                         </h4>
                         <span className="text-xs sm:text-sm font-medium text-gray-600">
-                          Ronda {index + 1} / {totalRondas}
+                          {t.roundText(index, totalRondas)}
                         </span>
                       </div>
                       
                       {index >= totalRondas ? (
                         <div className="text-center py-6 sm:py-8">
-                          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">¡Completado!</h3>
-                          <p className="text-gray-600 text-sm sm:text-base">Has respondido todas las preguntas.</p>
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">{t.completedTitle}</h3>
+                          <p className="text-gray-600 text-sm sm:text-base">{t.completedText}</p>
                         </div>
                       ) : (
                         <div key={`${index}-${retryKey}`}> {/* Clave dinámica con retry para forzar re-render en reintentos */}
@@ -556,7 +889,7 @@ export default function CarreraDelSaber() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               className={`mt-2 sm:mt-4 p-2 sm:p-3 rounded-lg text-center font-medium text-sm sm:text-base ${
-                                teamFeedbacks[teamId].includes('correcta')
+                                teamFeedbacks[teamId].includes(lang === 'es' ? 'correcta' : 'correct')
                                   ? "bg-green-100 text-green-800 border border-green-200"
                                   : "bg-red-100 text-red-800 border border-red-200"
                               }`}
@@ -584,7 +917,7 @@ export default function CarreraDelSaber() {
               className="text-center p-4 sm:p-6 bg-gradient-to-r from-[#63ed12]/10 to-[#5a2290]/10 rounded-lg shadow-inner border border-[#63ed12]/20"
             >
               <h2 className="text-xl sm:text-3xl font-bold text-[#5a2290] mb-2 sm:mb-4">
-                ¡Competencia Finalizada!
+                {t.finishedTitle}
               </h2>
               {ganador && (
                 <motion.div
@@ -612,16 +945,16 @@ export default function CarreraDelSaber() {
               )}
               
               <p className="text-lg sm:text-2xl font-semibold text-[#5a2290] mb-2">
-                Ganador: {ganador ? ganador.nombre : ''}
+                {t.winnerLabel} {ganador ? ganador.nombre : ''}
               </p>
               
               <div className="mt-4 sm:mt-6 mb-4 sm:mb-6 bg-white rounded-lg p-2 sm:p-4 shadow-md">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800 text-center">Resultados Finales</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800 text-center">{t.resultsTitle}</h3>
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-2 sm:px-6 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Equipo</th>
-                      <th className="px-2 sm:px-6 py-2 sm:py-3 text-right text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">Puntos</th>
+                      <th className="px-2 sm:px-6 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">{t.teamHeader}</th>
+                      <th className="px-2 sm:px-6 py-2 sm:py-3 text-right text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">{t.pointsHeader}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -652,7 +985,7 @@ export default function CarreraDelSaber() {
                 onClick={iniciarJuego}
                 className="bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-base sm:text-lg font-bold shadow-lg hover:from-[#4a1a80] hover:to-[#52d200] transform hover:scale-105 transition duration-300 w-full sm:w-auto"
               >
-                Nueva Competencia
+                {t.newCompetition}
               </button>
             </motion.div>
           </div>
@@ -660,7 +993,7 @@ export default function CarreraDelSaber() {
         
         {/* Pie de página */}
         <footer className="p-2 sm:p-3 bg-gradient-to-r from-[#5a2290] to-[#63ed12] text-white text-center text-xs sm:text-sm">
-          Carrera del Saber Tecnológico - Centro de Informática USS
+          {footer}
         </footer>
       </div>
     </div>
