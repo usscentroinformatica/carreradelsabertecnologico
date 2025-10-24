@@ -497,7 +497,7 @@ export default function CarreraDelSaber() {
                           <p className="text-gray-600 text-sm sm:text-base">Has respondido todas las preguntas.</p>
                         </div>
                       ) : (
-                        <>
+                        <div key={index}> {/* Clave para forzar re-render completo al cambiar de pregunta */}
                           
                           <div className="flex items-center mb-2 sm:mb-3">
                             <span className="px-2 sm:px-3 py-1 bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-medium rounded-full">
@@ -510,11 +510,11 @@ export default function CarreraDelSaber() {
                           </h3>
                           
                           <div className="grid grid-cols-1 gap-2 sm:gap-3">
-                            {shuffledOpciones.map((opcion, index) => {
+                            {shuffledOpciones.map((opcion, idx) => {
                               const isSelected = teamSelections[teamId] === opcion;
                               const isCorrect = opcion === currentQ.respuestaCorrecta;
                               
-                              let btnClass = 'p-2 sm:p-3 rounded-lg text-left transition-all transform hover:scale-102 border-2 w-full font-medium text-sm sm:text-base';
+                              let btnClass = 'p-2 sm:p-3 rounded-lg text-left transition-all transform hover:scale-102 border-2 w-full font-medium text-sm sm:text-base focus:outline-none active:outline-none [-webkit-tap-highlight-color:transparent]'; // Agregadas clases para mobile
                               
                               if (!hasAnswered) {
                                 btnClass += ' bg-white border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 cursor-pointer';
@@ -533,12 +533,12 @@ export default function CarreraDelSaber() {
                               
                               return (
                                 <button
-                                  key={index}
+                                  key={idx}
                                   onClick={() => seleccionarRespuesta(teamId, opcion)}
                                   disabled={hasAnswered}
                                   className={btnClass}
                                 >
-                                  <span className="font-semibold">{String.fromCharCode(65 + index)}.</span> {opcion}
+                                  <span className="font-semibold">{String.fromCharCode(65 + idx)}.</span> {opcion}
                                 </button>
                               );
                             })}
@@ -557,7 +557,7 @@ export default function CarreraDelSaber() {
                               {teamFeedbacks[teamId]}
                             </motion.div>
                           )}
-                        </>
+                        </div>
                       )}
                     </div>
                   );
