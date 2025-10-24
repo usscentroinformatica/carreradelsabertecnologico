@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
-// Banco de preguntas básicas de tecnología actual enfocadas en IA para el Centro de Informática de la USS (20 preguntas)
+// Banco de preguntas básicas de tecnología actual enfocadas en IA para el Centro de Informática de la USS
 const preguntasInformatica = [
   {
     id: 1,
@@ -73,79 +73,9 @@ const preguntasInformatica = [
     respuestaCorrecta: "Una criptomoneda",
     categoria: "Tecnología Actual"
   },
-  {
-    id: 11,
-    pregunta: "¿Qué es un algoritmo?",
-    opciones: ["Una receta de cocina", "Una secuencia de pasos para resolver un problema", "Un tipo de virus", "Un lenguaje"],
-    respuestaCorrecta: "Una secuencia de pasos para resolver un problema",
-    categoria: "IA Básica"
-  },
-  {
-    id: 12,
-    pregunta: "¿Qué significa API?",
-    opciones: ["Application Programming Interface", "Advanced Processing Input", "Artificial Personal Intelligence", "Audio Photo Image"],
-    respuestaCorrecta: "Application Programming Interface",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 13,
-    pregunta: "¿Qué es Python?",
-    opciones: ["Un lenguaje de programación", "Una serpiente", "Un framework", "Un OS"],
-    respuestaCorrecta: "Un lenguaje de programación",
-    categoria: "Programación"
-  },
-  {
-    id: 14,
-    pregunta: "¿Qué es un bot?",
-    opciones: ["Un robot pequeño", "Un programa automatizado", "Un botón", "Un byte"],
-    respuestaCorrecta: "Un programa automatizado",
-    categoria: "IA Actual"
-  },
-  {
-    id: 15,
-    pregunta: "¿Qué es IoT?",
-    opciones: ["Internet of Things", "Input Output Terminal", "Intelligent Operating Tool", "Image Over Time"],
-    respuestaCorrecta: "Internet of Things",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 16,
-    pregunta: "¿Qué es AR?",
-    opciones: ["Augmented Reality", "Artificial Robot", "Audio Recorder", "Advanced Research"],
-    respuestaCorrecta: "Augmented Reality",
-    categoria: "Tecnología Actual"
-  },
-  {
-    id: 17,
-    pregunta: "¿Qué es SQL?",
-    opciones: ["Structured Query Language", "Simple Query Logic", "System Quality Level", "Secure Query Link"],
-    respuestaCorrecta: "Structured Query Language",
-    categoria: "Bases de Datos"
-  },
-  {
-    id: 18,
-    pregunta: "¿Qué es un firewall?",
-    opciones: ["Una pared de fuego", "Un software de seguridad", "Un tipo de email", "Un comando"],
-    respuestaCorrecta: "Un software de seguridad",
-    categoria: "Seguridad"
-  },
-  {
-    id: 19,
-    pregunta: "¿Qué es HTML?",
-    opciones: ["HyperText Markup Language", "High Tech Machine Language", "Home Tool Markup Language", "Hyper Transfer Mark Language"],
-    respuestaCorrecta: "HyperText Markup Language",
-    categoria: "Web"
-  },
-  {
-    id: 20,
-    pregunta: "¿Qué es un dataset?",
-    opciones: ["Un conjunto de datos", "Un disco duro", "Un editor de texto", "Un dispositivo"],
-    respuestaCorrecta: "Un conjunto de datos",
-    categoria: "Datos"
-  }
 ];
 
-// Banco de preguntas básicas de inglés (20 preguntas, completamente en inglés)
+// Banco de preguntas básicas de inglés (ahora completamente en inglés)
 const preguntasIngles = [
   {
     id: 1,
@@ -217,76 +147,6 @@ const preguntasIngles = [
     respuestaCorrecta: "Run",
     categoria: "Basic Vocabulary"
   },
-  {
-    id: 11,
-    pregunta: "What is the past tense of 'go'?",
-    opciones: ["goed", "went", "gone", "going"],
-    respuestaCorrecta: "went",
-    categoria: "Grammar"
-  },
-  {
-    id: 12,
-    pregunta: "What does 'family' mean?",
-    opciones: ["Friends", "Relatives", "School", "Work"],
-    respuestaCorrecta: "Relatives",
-    categoria: "Vocabulary"
-  },
-  {
-    id: 13,
-    pregunta: "Complete: We _____ happy.",
-    opciones: ["am", "is", "are", "be"],
-    respuestaCorrecta: "are",
-    categoria: "Grammar"
-  },
-  {
-    id: 14,
-    pregunta: "How do you spell 'blue'?",
-    opciones: ["Blew", "Blue", "Bloue", "Blo"],
-    respuestaCorrecta: "Blue",
-    categoria: "Spelling"
-  },
-  {
-    id: 15,
-    pregunta: "What is the opposite of 'hot'?",
-    opciones: ["Cold", "Warm", "Cool", "Heat"],
-    respuestaCorrecta: "Cold",
-    categoria: "Vocabulary"
-  },
-  {
-    id: 16,
-    pregunta: "Complete: This is my book. _____ is on the desk.",
-    opciones: ["He", "She", "It", "They"],
-    respuestaCorrecta: "It",
-    categoria: "Pronouns"
-  },
-  {
-    id: 17,
-    pregunta: "What time is it? It's half past two.",
-    opciones: ["1:30", "2:30", "3:00", "1:00"],
-    respuestaCorrecta: "2:30",
-    categoria: "Time"
-  },
-  {
-    id: 18,
-    pregunta: "Complete: _____ cat is black.",
-    opciones: ["A", "An", "The", "No article"],
-    respuestaCorrecta: "The",
-    categoria: "Articles"
-  },
-  {
-    id: 19,
-    pregunta: "What does 'eat' mean?",
-    opciones: ["Drink", "Sleep", "Eat", "Run"],
-    respuestaCorrecta: "Eat",
-    categoria: "Vocabulary"
-  },
-  {
-    id: 20,
-    pregunta: "What is the plural of 'man'?",
-    opciones: ["mans", "men", "man", "menn"],
-    respuestaCorrecta: "men",
-    categoria: "Grammar"
-  }
 ];
 
 // Objeto de traducciones
@@ -294,7 +154,7 @@ const translations = {
   es: {
     titlePrefix: "Carrera del Saber",
     titleSuffixInformatica: "Tecnológico",
-    titleSuffixIngles: "en Inglés",
+    titleSuffixIngles: "SpeakLink",
     subtitleInformatica: "Centro de Informática - Universidad Señor de Sipán",
     subtitleIngles: "Centro de Idiomas - Universidad Señor de Sipán",
     descriptionInformatica: "¡Compite respondiendo preguntas de IA y tecnología actual de forma independiente!",
@@ -367,7 +227,7 @@ export default function CarreraDelSaber() {
   const t = translations[lang];
   
   // Preguntas actuales basadas en tema
-  const basePreguntas = tema === 'informatica' ? preguntasInformatica : preguntasIngles;
+  const currentPreguntas = tema === 'informatica' ? preguntasInformatica : preguntasIngles;
   
   // Títulos y descripciones dinámicos
   const titleSuffix = tema === 'informatica' ? t.titleSuffixInformatica : t.titleSuffixIngles;
@@ -397,9 +257,6 @@ export default function CarreraDelSaber() {
   const [teamAnimaciones, setTeamAnimaciones] = useState({1: false, 2: false});
   const [teamShuffledOptions, setTeamShuffledOptions] = useState({1: null, 2: null});
   const [teamRetryCounts, setTeamRetryCounts] = useState({1: 0, 2: 0}); // Nuevo: para forzar re-render en reintentos
-  
-  // Preguntas barajadas para la competencia actual
-  const [shuffledPreguntas, setShuffledPreguntas] = useState([]);
   
   // Colores de equipos para clases dinámicas
   const teamStyles = {
@@ -434,8 +291,8 @@ export default function CarreraDelSaber() {
   // Obtener pregunta actual para un equipo
   const getCurrentQuestion = useCallback((teamId) => {
     const idx = teamQuestionIndices[teamId] || 0;
-    return idx < totalRondas ? shuffledPreguntas[idx] : null;
-  }, [teamQuestionIndices, totalRondas, shuffledPreguntas]);
+    return idx < totalRondas ? currentPreguntas[idx] : null;
+  }, [teamQuestionIndices, totalRondas, currentPreguntas]);
   
   // Avanzar a la siguiente pregunta para un equipo
   const advanceForTeam = useCallback((teamId) => {
@@ -444,7 +301,7 @@ export default function CarreraDelSaber() {
     
     // Pre-calcular y establecer las opciones barajadas para la nueva pregunta (evita flash de opciones incorrectas)
     if (newIndex < totalRondas) {
-      const newOpts = [...shuffledPreguntas[newIndex].opciones].sort(() => Math.random() - 0.5);
+      const newOpts = [...currentPreguntas[newIndex].opciones].sort(() => Math.random() - 0.5);
       setTeamShuffledOptions(prev => ({ ...prev, [teamId]: newOpts }));
     } else {
       // Si terminó, establecer como null para evitar mostrar opciones
@@ -485,7 +342,7 @@ export default function CarreraDelSaber() {
         finalizarJuego();
       }
     }
-  }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego, shuffledPreguntas]);
+  }, [teamQuestionIndices, totalRondas, jugadores, finalizarJuego, currentPreguntas]);
   
   // Manejar selección de respuesta
   const seleccionarRespuesta = useCallback((teamId, opcion) => {
@@ -546,12 +403,12 @@ export default function CarreraDelSaber() {
         // Pre-barajar para el reintento (evita cualquier flash residual)
         const idx = teamQuestionIndices[teamId];
         if (idx < totalRondas) {
-          const opts = [...shuffledPreguntas[idx].opciones].sort(() => Math.random() - 0.5);
+          const opts = [...currentPreguntas[idx].opciones].sort(() => Math.random() - 0.5);
           setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
         }
       }, 3000);
     }
-  }, [advanceForTeam, getCurrentQuestion, teamSelections, teamQuestionIndices, totalRondas, shuffledPreguntas, t]);
+  }, [advanceForTeam, getCurrentQuestion, teamSelections, teamQuestionIndices, totalRondas, currentPreguntas, t]);
   
   // Ajustar número de rondas (preguntas por equipo)
   const ajustarRondas = (cantidad) => {
@@ -565,12 +422,8 @@ export default function CarreraDelSaber() {
     ));
   };
   
-  // Iniciar el juego preservando nombres y barajando preguntas
+  // Iniciar el juego preservando nombres
   const iniciarJuego = () => {
-    // Barajar las preguntas del tema actual
-    const shuffled = [...basePreguntas].sort(() => Math.random() - 0.5);
-    setShuffledPreguntas(shuffled);
-    
     setJugadores(prevJugadores => 
       prevJugadores.map(jugador => ({
         ...jugador,
@@ -594,11 +447,11 @@ export default function CarreraDelSaber() {
       const teamId = parseInt(teamIdStr);
       const idx = teamQuestionIndices[teamId];
       if (idx < totalRondas && teamShuffledOptions[teamId] === null) { // Solo si no está pre-barajado
-        const opts = [...shuffledPreguntas[idx].opciones].sort(() => Math.random() - 0.5);
+        const opts = [...currentPreguntas[idx].opciones].sort(() => Math.random() - 0.5);
         setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
       }
     });
-  }, [teamQuestionIndices, totalRondas, teamShuffledOptions, shuffledPreguntas]);
+  }, [teamQuestionIndices, totalRondas, teamShuffledOptions, currentPreguntas]);
   
   // Efecto para verificar fin de juego cuando un equipo completa
   useEffect(() => {
@@ -705,7 +558,7 @@ export default function CarreraDelSaber() {
                   {t.roundsText(totalRondas)}
                 </span>
                 <button 
-                  onClick={() => ajustarRondas(Math.min(20, totalRondas + 5))} 
+                  onClick={() => ajustarRondas(Math.min(10, totalRondas + 5))} 
                   className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-3 sm:px-4 rounded-r transition duration-200 text-sm sm:text-base"
                 >
                   +
