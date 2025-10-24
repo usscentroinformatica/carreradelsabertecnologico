@@ -864,22 +864,47 @@ export default function CarreraDelSaber() {
                             {shuffledOpciones.map((opcion, idx) => {
                               const isSelected = teamSelections[teamId] === opcion;
                               const isCorrect = opcion === currentQ.respuestaCorrecta;
+                              const letter = String.fromCharCode(65 + idx);
                               
-                              let btnClass = 'p-2 sm:p-3 rounded-lg text-left transition-all transform hover:scale-102 border-2 w-full font-medium text-sm sm:text-base focus:outline-none active:outline-none [-webkit-tap-highlight-color:transparent]'; // Agregadas clases para mobile
+                              let containerClass = 'relative pl-12 pr-4 py-3 rounded-lg transition-all duration-200 border-2 w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#63ed12] active:outline-none [-webkit-tap-highlight-color:transparent]';
+                              
+                              // Clases base para el círculo
+                              let circleClass = 'absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-200 shadow-md z-10';
+                              
+                              let textClass = 'block text-sm sm:text-base font-medium leading-relaxed ml-1';
                               
                               if (!hasAnswered) {
-                                btnClass += ' bg-white border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 cursor-pointer';
+                                // Estado no respondido: Círculo con borde morado, fondo blanco, hover efectos
+                                containerClass += ' bg-white border-[#5a2290] hover:border-[#63ed12] hover:bg-[#63ed12]/5 cursor-pointer';
+                                circleClass += ' bg-white border-2 border-[#5a2290] text-[#5a2290] hover:border-[#63ed12] hover:text-[#63ed12] hover:shadow-lg';
+                                textClass += ' text-gray-700 hover:text-[#5a2290]';
                               } else {
+                                // Estado respondido
+                                containerClass += ' opacity-75 cursor-not-allowed';
                                 if (isSelected) {
-                                  btnClass += isCorrect 
-                                    ? ' bg-green-100 border-green-500 text-green-800' 
-                                    : ' bg-red-100 border-red-500 text-red-800';
+                                  // Seleccionada
+                                  if (isCorrect) {
+                                    // Correcta
+                                    containerClass += ' bg-[#63ed12]/10 border-[#63ed12]';
+                                    circleClass += ' bg-[#63ed12] text-white border-2 border-[#63ed12] shadow-green-200';
+                                    textClass += ' text-[#63ed12] font-semibold';
+                                  } else {
+                                    // Incorrecta
+                                    containerClass += ' bg-red-100 border-red-400';
+                                    circleClass += ' bg-red-500 text-white border-2 border-red-500 shadow-red-200';
+                                    textClass += ' text-red-800 line-through';
+                                  }
                                 } else if (isCorrect) {
-                                  btnClass += ' bg-green-100 border-green-500 text-green-800';
+                                  // Correcta pero no seleccionada: resaltar
+                                  containerClass += ' bg-[#63ed12]/10 border-[#63ed12]';
+                                  circleClass += ' bg-[#63ed12] text-white border-2 border-[#63ed12] shadow-green-200';
+                                  textClass += ' text-[#63ed12] font-semibold';
                                 } else {
-                                  btnClass += ' bg-gray-100 border-gray-300 text-gray-500';
+                                  // Otras incorrectas: gris
+                                  containerClass += ' bg-gray-100 border-gray-300';
+                                  circleClass += ' bg-gray-300 text-gray-500 border-2 border-gray-300';
+                                  textClass += ' text-gray-500';
                                 }
-                                btnClass += ' opacity-75 cursor-not-allowed';
                               }
                               
                               return (
@@ -887,9 +912,12 @@ export default function CarreraDelSaber() {
                                   key={idx}
                                   onClick={() => seleccionarRespuesta(teamId, opcion)}
                                   disabled={hasAnswered}
-                                  className={btnClass}
+                                  className={containerClass}
                                 >
-                                  <span className="font-semibold">{String.fromCharCode(65 + idx)}.</span> {opcion}
+                                  <div className={circleClass}>
+                                    {letter}
+                                  </div>
+                                  <span className={textClass}>{opcion}</span>
                                 </button>
                               );
                             })}
