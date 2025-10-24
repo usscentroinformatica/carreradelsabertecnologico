@@ -97,6 +97,7 @@ export default function CarreraDelSaber() {
   const [teamFeedbacks, setTeamFeedbacks] = useState({1: '', 2: ''});
   const [teamAnimaciones, setTeamAnimaciones] = useState({1: false, 2: false});
   const [teamShuffledOptions, setTeamShuffledOptions] = useState({1: null, 2: null});
+  const [teamRetryCounts, setTeamRetryCounts] = useState({1: 0, 2: 0}); // Nuevo: para forzar re-render en reintentos
   
   // Colores de equipos para clases dinámicas
   const teamStyles = {
@@ -232,15 +233,19 @@ export default function CarreraDelSaber() {
       }));
       // Después de 3000ms, resetear para reintentar
       setTimeout(() => {
+        // Primero resetear selección y feedback
+        setTeamSelections(prev => ({ ...prev, [teamId]: null }));
+        setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
+        
+        // Incrementar contador de reintento para forzar re-render
+        setTeamRetryCounts(prev => ({ ...prev, [teamId]: (prev[teamId] || 0) + 1 }));
+        
         // Pre-barajar para el reintento (evita cualquier flash residual)
         const idx = teamQuestionIndices[teamId];
         if (idx < totalRondas) {
           const opts = [...preguntas[idx].opciones].sort(() => Math.random() - 0.5);
           setTeamShuffledOptions(prev => ({ ...prev, [teamId]: opts }));
         }
-        
-        setTeamSelections(prev => ({ ...prev, [teamId]: null }));
-        setTeamFeedbacks(prev => ({ ...prev, [teamId]: '' }));
       }, 3000);
     }
   }, [advanceForTeam, getCurrentQuestion, teamSelections, teamQuestionIndices, totalRondas]);
@@ -271,6 +276,7 @@ export default function CarreraDelSaber() {
     setTeamFeedbacks({1: '', 2: ''});
     setTeamAnimaciones({1: false, 2: false});
     setTeamShuffledOptions({1: null, 2: null});
+    setTeamRetryCounts({1: 0, 2: 0}); // Resetear contadores de reintento
     setGanador(null);
     setEstadoJuego("jugando");
   };
@@ -479,6 +485,7 @@ export default function CarreraDelSaber() {
                   const currentQ = getCurrentQuestion(teamId);
                   const hasAnswered = teamSelections[teamId] !== null;
                   const shuffledOpciones = teamShuffledOptions[teamId] || currentQ?.opciones || [];
+                  const retryKey = teamRetryCounts[teamId] || 0;
                   
                   return (
                     <div key={teamId} className={`p-2 sm:p-4 ${teamStyle.border} border-2 rounded-lg shadow-sm ${index >= totalRondas ? 'bg-gray-50' : 'bg-white'}`}>
@@ -497,7 +504,7 @@ export default function CarreraDelSaber() {
                           <p className="text-gray-600 text-sm sm:text-base">Has respondido todas las preguntas.</p>
                         </div>
                       ) : (
-                        <div key={index}> {/* Clave para forzar re-render completo al cambiar de pregunta */}
+                        <div key={`${index}-${retryKey}`}> {/* Clave dinámica con retry para forzar re-render en reintentos */}
                           
                           <div className="flex items-center mb-2 sm:mb-3">
                             <span className="px-2 sm:px-3 py-1 bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-medium rounded-full">
